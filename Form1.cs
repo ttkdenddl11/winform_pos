@@ -16,5 +16,10 @@ namespace _45_DB_1_POS_Build
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }
