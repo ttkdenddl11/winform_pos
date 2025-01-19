@@ -85,6 +85,7 @@ namespace _45_DB_1_POS_Build
             this.btnAdd.TabIndex = 3;
             this.btnAdd.Text = "담기";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnCalculate
             // 
