@@ -86,7 +86,7 @@ namespace _45_DB_1_POS_Build
         {
             foreach (DataGridViewRow oRow in dgViewSale.SelectedRows)
             {
-                dgViewSale.Rows.Remove(oRow);
+                dgViewSale.Rows.RemoveAt(oRow.Index);
                 dgViewSale.DataSource = table;
             }
             double all = 0;
@@ -95,6 +95,45 @@ namespace _45_DB_1_POS_Build
                 all += Convert.ToDouble(dgViewSale.Rows[i].Cells[3].Value);
             }
             tboxSum.Text = all.ToString();
+        }
+
+        private void btnCalculate_Click(object sender, EventArgs e)
+        {
+            using(MySqlConnection conn = new MySqlConnection("datasource=localhost;port=3306;username=dongjin;password=park228577!;Charset=utf8mb4"))
+            {
+                conn.Open();
+         
+                MySqlCommand command = new MySqlCommand("use pos_dataset", conn);
+                command.ExecuteNonQuery();
+
+                for (int i = 0; i < dgViewSale.Rows.Count - 1; i++)
+                {
+                    string name = dgViewSale.Rows[i].Cells[0].Value.ToString();
+                    string price = dgViewSale.Rows[i].Cells[1].Value.ToString();
+                    string count = dgViewSale.Rows[i].Cells[2].Value.ToString();
+                    string total = dgViewSale.Rows[i].Cells[3].Value.ToString();
+
+                    string sql = string.Format("insert into sales_tb(name, price, count, total, c_num) values ('{0}', {1}, {2}, {3}, {4})", @name, @price, @count, @total, @i);
+
+                    try
+                    {
+                        command = new MySqlCommand(sql, conn);
+                        command.ExecuteNonQuery();
+                    }
+                    catch(Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }
+            }
+            MessageBox.Show("계산되었습니다.");
+
+            for(int i = 0; i < dgViewSale.Rows.Count; i++)
+            {
+                if (dgViewSale.Rows[0].IsNewRow == true)
+                    break;
+                dgViewSale.Rows.RemoveAt(0);
+            }
         }
     }
 }

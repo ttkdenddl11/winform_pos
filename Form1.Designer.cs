@@ -96,6 +96,7 @@ namespace _45_DB_1_POS_Build
             this.btnCalculate.TabIndex = 4;
             this.btnCalculate.Text = "계산하기";
             this.btnCalculate.UseVisualStyleBackColor = true;
+            this.btnCalculate.Click += new System.EventHandler(this.btnCalculate_Click);
             // 
             // label2
             // 
