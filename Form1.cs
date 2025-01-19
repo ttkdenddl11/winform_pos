@@ -70,6 +70,7 @@ namespace _45_DB_1_POS_Build
                 {
                     all += double.Parse((dgViewSale.Rows[i].Cells[3].Value).ToString());
                 }
+
                 tboxSum.Text = all.ToString();
 
             } 
@@ -79,6 +80,21 @@ namespace _45_DB_1_POS_Build
                 tboxName.Clear();
                 tboxPrice.Clear();
             }
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow oRow in dgViewSale.SelectedRows)
+            {
+                dgViewSale.Rows.Remove(oRow);
+                dgViewSale.DataSource = table;
+            }
+            double all = 0;
+            for (int i = 0; i < dgViewSale.Rows.Count; i++)
+            {
+                all += Convert.ToDouble(dgViewSale.Rows[i].Cells[3].Value);
+            }
+            tboxSum.Text = all.ToString();
         }
     }
 }
