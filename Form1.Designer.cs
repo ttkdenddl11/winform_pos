@@ -44,6 +44,7 @@ namespace _45_DB_1_POS_Build
             this.tboxSum = new System.Windows.Forms.TextBox();
             this.btnSaleState = new System.Windows.Forms.Button();
             this.btnInven = new System.Windows.Forms.Button();
+            this.lblStatus = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgViewSale)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numItem)).BeginInit();
             this.SuspendLayout();
@@ -180,11 +181,22 @@ namespace _45_DB_1_POS_Build
             this.btnInven.Text = "재고 현황";
             this.btnInven.UseVisualStyleBackColor = true;
             // 
+            // lblStatus
+            // 
+            this.lblStatus.AutoSize = true;
+            this.lblStatus.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblStatus.Location = new System.Drawing.Point(736, 467);
+            this.lblStatus.Name = "lblStatus";
+            this.lblStatus.Size = new System.Drawing.Size(48, 13);
+            this.lblStatus.TabIndex = 15;
+            this.lblStatus.Text = "Server";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(824, 489);
+            this.Controls.Add(this.lblStatus);
             this.Controls.Add(this.btnInven);
             this.Controls.Add(this.btnSaleState);
             this.Controls.Add(this.tboxSum);
@@ -202,6 +214,7 @@ namespace _45_DB_1_POS_Build
             this.Controls.Add(this.btnCancel);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgViewSale)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numItem)).EndInit();
             this.ResumeLayout(false);
@@ -226,6 +239,7 @@ namespace _45_DB_1_POS_Build
         private System.Windows.Forms.TextBox tboxSum;
         private System.Windows.Forms.Button btnSaleState;
         private System.Windows.Forms.Button btnInven;
+        private System.Windows.Forms.Label lblStatus;
     }
 }
 
