@@ -99,13 +99,10 @@ namespace _45_DB_1_POS_Build
 
         private void btnCalculate_Click(object sender, EventArgs e)
         {
-            using(MySqlConnection conn = new MySqlConnection("datasource=localhost;port=3306;username=dongjin;password=park228577!;Charset=utf8mb4"))
+            using(MySqlConnection conn = new MySqlConnection("Server=localhost;Port=3306;Database=pos_dataset;Uid=dongjin;Pwd=park228577!;Charset=utf8mb4"))
             {
                 conn.Open();
-         
-                MySqlCommand command = new MySqlCommand("use pos_dataset", conn);
-                command.ExecuteNonQuery();
-
+                MySqlCommand command = null;
                 for (int i = 0; i < dgViewSale.Rows.Count - 1; i++)
                 {
                     string name = dgViewSale.Rows[i].Cells[0].Value.ToString();
@@ -134,6 +131,12 @@ namespace _45_DB_1_POS_Build
                     break;
                 dgViewSale.Rows.RemoveAt(0);
             }
+        }
+
+        private void btnSaleState_Click(object sender, EventArgs e)
+        {
+            Form2 form2 = new Form2();
+            form2.ShowDialog();
         }
     }
 }

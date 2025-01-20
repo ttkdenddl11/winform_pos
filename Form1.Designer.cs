@@ -174,6 +174,7 @@ namespace _45_DB_1_POS_Build
             this.btnSaleState.TabIndex = 13;
             this.btnSaleState.Text = "판매 내역";
             this.btnSaleState.UseVisualStyleBackColor = true;
+            this.btnSaleState.Click += new System.EventHandler(this.btnSaleState_Click);
             // 
             // btnInven
             // 

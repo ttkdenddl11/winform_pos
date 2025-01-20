@@ -41,3 +41,4 @@ C:\Users\user\source\repos\15.partial\45_DB_1_POS_Build\obj\Debug\45_DB_1_POS_Bu
 C:\Users\user\source\repos\15.partial\45_DB_1_POS_Build\obj\Debug\45_DB_1_POS_Build.csproj.CopyComplete
 C:\Users\user\source\repos\15.partial\45_DB_1_POS_Build\obj\Debug\45_DB_1_POS_Build.exe
 C:\Users\user\source\repos\15.partial\45_DB_1_POS_Build\obj\Debug\45_DB_1_POS_Build.pdb
+C:\Users\user\source\repos\15.partial\45_DB_1_POS_Build\obj\Debug\_45_DB_1_POS_Build.Form2.resources
