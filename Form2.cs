@@ -67,10 +67,10 @@ namespace _45_DB_1_POS_Build
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            if(tboxName.Text == null)
+            if (tboxName.Text == null)
             {
                 MessageBox.Show("검색 정보를 입력해주세요.");
-            } 
+            }
             else
             {
                 string searchInfo = tboxSearch.Text;
@@ -79,7 +79,9 @@ namespace _45_DB_1_POS_Build
                 {
                     conn.Open();
                     string query = "select * from sales_tb where concat(`name`, `price`, `count`, `total`) like '%" + searchInfo + "%'";
-                    command = new MySqlCommand(query, conn);
+                    string query2 = string.Format("select * from sales_tb where concat(`name`, `price`, `count`, `total`) like '%{0}%'", searchInfo);
+
+                    command = new MySqlCommand(query2, conn);
                     adapter = new MySqlDataAdapter(command);
                     DataTable dt = new DataTable();
 
@@ -88,6 +90,61 @@ namespace _45_DB_1_POS_Build
 
                 }
                 tboxName.Clear();
+            }
+        }
+
+        private void dgViewHistory_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            tboxID.Text = dgViewHistory.Rows[e.RowIndex].Cells[0].Value.ToString();
+            tboxName.Text = dgViewHistory.Rows[e.RowIndex].Cells[1].Value.ToString();
+            tboxPrice.Text = dgViewHistory.Rows[e.RowIndex].Cells[2].Value.ToString();
+            tboxCount.Text = dgViewHistory.Rows[e.RowIndex].Cells[3].Value.ToString();
+            tboxTotal.Text = dgViewHistory.Rows[e.RowIndex].Cells[4].Value.ToString();
+        }
+
+        private void btnAlter_Click(object sender, EventArgs e)
+        {
+            if (tboxName.Text == "" || tboxPrice.Text == "" || tboxCount.Text == "")
+            {
+                MessageBox.Show("수정할 항목을 제대로 입력해주세요.");
+            }
+            else if(int.Parse(tboxCount.Text) < 0)
+            {
+                MessageBox.Show("숫자는 0 이상입니다.");
+            }
+            else
+            {
+                string name = tboxName.Text;
+                int price = int.Parse(tboxPrice.Text);
+                int count = int.Parse(tboxCount.Text);
+                int total = price * count;
+                tboxTotal.Text = total.ToString();
+
+                conn = new MySqlConnection(server_con);
+                using (conn)
+                {
+                    conn.Open();
+                    string quary = string.Format("update sales_tb set name = '{0}', price = {1}, count = {2}, total = {3} where no = {4}", name, price, count, total, tboxID.Text);
+                    command = new MySqlCommand(quary, conn);
+                    try
+                    {
+                        command.ExecuteNonQuery(); // insert, update, delete, create table 데이터가 변경됨
+                        MessageBox.Show("수정 완료");
+                        //command.ExecuteScalar();    // sum, count, max, min 등등
+                        //using (MySqlDataReader reader = cmd.ExecuteReader())  // 주로 select 명령어 읽을 때
+                        //{
+                        //    while (reader.Read())
+                        //    {
+                        //        Console.WriteLine(reader["name"] + " - " + reader["price"]);
+                        //    }
+                        //}
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }
+                LoadData();
             }
         }
     }

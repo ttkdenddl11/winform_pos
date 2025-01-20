@@ -43,7 +43,7 @@ namespace _45_DB_1_POS_Build
             this.label6 = new System.Windows.Forms.Label();
             this.tboxCount = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tboxTotal = new System.Windows.Forms.TextBox();
             this.btnAlter = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnRefresh = new System.Windows.Forms.Button();
@@ -59,6 +59,7 @@ namespace _45_DB_1_POS_Build
             this.dgViewHistory.RowTemplate.Height = 23;
             this.dgViewHistory.Size = new System.Drawing.Size(621, 445);
             this.dgViewHistory.TabIndex = 0;
+            this.dgViewHistory.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgViewHistory_CellClick);
             // 
             // label1
             // 
@@ -176,13 +177,13 @@ namespace _45_DB_1_POS_Build
             this.label7.TabIndex = 15;
             this.label7.Text = "합계";
             // 
-            // textBox1
+            // tboxTotal
             // 
-            this.textBox1.Enabled = false;
-            this.textBox1.Location = new System.Drawing.Point(676, 350);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 21);
-            this.textBox1.TabIndex = 14;
+            this.tboxTotal.Enabled = false;
+            this.tboxTotal.Location = new System.Drawing.Point(676, 350);
+            this.tboxTotal.Name = "tboxTotal";
+            this.tboxTotal.Size = new System.Drawing.Size(100, 21);
+            this.tboxTotal.TabIndex = 14;
             // 
             // btnAlter
             // 
@@ -192,6 +193,7 @@ namespace _45_DB_1_POS_Build
             this.btnAlter.TabIndex = 16;
             this.btnAlter.Text = "수정";
             this.btnAlter.UseVisualStyleBackColor = true;
+            this.btnAlter.Click += new System.EventHandler(this.btnAlter_Click);
             // 
             // btnDelete
             // 
@@ -232,7 +234,7 @@ namespace _45_DB_1_POS_Build
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnAlter);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.tboxTotal);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.tboxCount);
             this.Controls.Add(this.label5);
@@ -271,7 +273,7 @@ namespace _45_DB_1_POS_Build
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox tboxCount;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tboxTotal;
         private System.Windows.Forms.Button btnAlter;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnRefresh;
