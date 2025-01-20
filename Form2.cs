@@ -147,5 +147,37 @@ namespace _45_DB_1_POS_Build
                 LoadData();
             }
         }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            using (conn = new MySqlConnection(server_con))
+            {
+                try
+                {
+                    conn.Open();
+
+                    //열들을 선택했을 때 삭제 방식
+
+                    //foreach (DataGridViewRow oRow in dgViewHistory.SelectedRows)
+                    //{
+                    //    string query = string.Format("delete from sales_tb where no = {0}", oRow.Cells[0].Value);
+                    //    command = new MySqlCommand(query, conn);
+                    //    command.ExecuteNonQuery();
+                    //}
+                    //MessageBox.Show("삭제 완료");
+
+                    // 하나의 셀 선택시 id로 삭제
+                    string query = string.Format("delete from sales_tb where no = {0};", tboxID.Text);
+                    command = new MySqlCommand(query, conn);
+                    command.ExecuteNonQuery();
+                    MessageBox.Show("삭제 완료");
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+            LoadData();
+        }
     }
 }
