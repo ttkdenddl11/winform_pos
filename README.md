@@ -2,6 +2,7 @@
 * 링크 - https://enqnajrwk.tistory.com/8
 
 * NuGet 패키지 MySql.Data 설치
+  
   ---
   ![image](https://github.com/user-attachments/assets/4c2b408e-a1f0-4086-b029-61b4be2a4e15)
 
